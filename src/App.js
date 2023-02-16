@@ -7,6 +7,7 @@ import { routePath } from './constants/routes';
 
 // components
 import { Home, CategoryMovie } from './pages';
+import AddNewMovie from './pages/AddNewMovie';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           {/* <Route path={`${routePath.movies}/:type`} element={<Movies />} /> */}
           {/* <Route path={`${routePath.movie}/:id`} element={<Movie />} /> */}
           <Route path={routePath.invalid} element={<Home />} />
+          <Route path={routePath.AddNewMovie} exact={true} element={<AddNewMovie />} />
         </Routes>
       </Router>
     </div>

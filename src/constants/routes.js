@@ -7,5 +7,6 @@ export const routePath = {
     movies      : `${APP_PATH}/movies`,
     topRated    : `${APP_PATH}/movies`,
     upcoming    : `${APP_PATH}/movies`,
-    invalid     : `${APP_PATH}/*`
+    invalid     : `${APP_PATH}/*`,
+    AddNewMovie    : `${APP_PATH}/addmovie`,
 }

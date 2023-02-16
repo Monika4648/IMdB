@@ -32,6 +32,9 @@ const HeaderMenu = ({ handleToggle, open, anchorRef }) => {
                                 <Link to={`${routePath.categories}?category=upcoming`} style={{ textDecoration: 'none', color: 'inherit'}}>
                                 <MenuItem onClick={handleToggle}>Upcoming</MenuItem>
                                 </Link>
+                                <Link to={`${routePath.AddNewMovie}`} style={{ textDecoration: 'none', color: 'inherit'}}>
+                                <MenuItem>Add New Movie</MenuItem>
+                                </Link>
                             </MenuList>
                         </ClickAwayListener>
                     </Paper>
