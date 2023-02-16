@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { routePath } from './constants/routes';
 
 // components
-import { Home, CategoryMovie } from './pages';
-import AddNewMovie from './pages/AddNewMovie';
+import { Home, CategoryMovie,AddNewMovie } from './pages';
+// import AddNewMovie from './pages/AddNewMovie';
 
 function App() {
   return (

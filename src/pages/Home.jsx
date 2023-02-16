@@ -32,7 +32,7 @@ const Home = () => {
         }
         getData();
       }, [])
-
+       console.log(movies)
       return (
           <>
               <Header />
