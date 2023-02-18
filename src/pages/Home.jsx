@@ -10,6 +10,8 @@ import Header from '../components/common/Header'
 import Banner from '../components/common/Banner';
 import UpNext from '../components/common/UpNext';
 import Slides from '../components/Slides';
+import { useDispatch, useSelector } from 'react-redux';
+import { setmovies } from '../store/reducer';
 
 const Container = styled(Box)`
     padding: 0 115px !important;
@@ -23,12 +25,15 @@ const Wrapper = styled(Box)`
 
 const Home = () => {
 
-    const [movies, setMovies] = useState([]);
+    // const [movies, setMovies] = useState([]);
+    const movies = useSelector((state) => state.movie.movies)
+  const dispatch = useDispatch()
 
     useEffect(() => {
         const getData = async () => {
             let response = await categoryMovies(NOWPLAYING_API_URL);
-            setMovies(response.results);    
+            // setMovies(response.results);
+            dispatch(setmovies(response.results))    
         }
         getData();
       }, [])

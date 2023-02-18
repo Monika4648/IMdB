@@ -32,14 +32,14 @@ const UpNext = ({ movies }) => {
     return (
         <Component>
             <Typography>Up next</Typography>
-            {
-                movies.splice(0, 3).map(movie => (
+            {/* {movies.length?
+                movies?.splice(0, 3).map(movie => (
                     <Wrapper>
                         <Poster src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="poster" />
                         <Typography>{movie.original_title}</Typography>
                     </Wrapper>
-                ))
-            }
+                )):null
+            } */}
         </Component>
     )
 }

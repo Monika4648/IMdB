@@ -55,8 +55,8 @@ const Banner = ({movies}) =>{
         style={{ overflow: 'visible' }}
     >
         {
-            movies.map(movie => (
-                <StyledBanner key={movie.id} src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
+            movies ?.map(movie => (
+                <StyledBanner key={movie.id} src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`||`${movie.poster_path}`} />
             ))
         }
     </Carousel>

@@ -1,8 +1,11 @@
-import { Button, TextField } from '@mui/material'
+import { Button, Input, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Banner from '../components/common/Banner'
 import Header from '../components/common/Header'
 import { NOWPLAYING_API_URL } from '../constants/constant'
 import { categoryMovies } from '../services/api'
+import { setmovies } from '../store/reducer'
 
 function AddNewMovie() {
 
@@ -32,7 +35,7 @@ function AddNewMovie() {
         1365.727,
         poster_path
         : 
-        "/jrPKVQGjc3YZXm07OYMriIB47HM.jpg",
+        "",
         release_date
         : 
         "2023-01-20",
@@ -54,30 +57,32 @@ function AddNewMovie() {
               return { ...prevState, [name]: value }
             })
         }
-        const [movies, setMovies] = useState([]);
-
-        useEffect(() => {
-            const getData = async () => {
-                let response = await categoryMovies(NOWPLAYING_API_URL);
-                setMovies(response.results);    
-            }
-            getData();
-          }, [])
+        const movies = useSelector((state) => state.movie.movies)
+        const dispatch = useDispatch()
            console.log(movies)
         const handleSubmit = (e) => {
             e.preventDefault()
-
+            dispatch(setmovies([...movies,formdetail]))
         }
+       
   return (
     <div>
         <Header/>
-        <form onSubmit={handleSubmit} style={{display:'flex',flexWrap:'wrap'}}>
-            {Object.keys(formdetail).map((fieldkey,i)=>(
-
-        <TextField style={{margin:10,width:'25%'}} onChange={handleChange}id="outlined-basic" label={fieldkey}name={fieldkey} variant="outlined" />
-            ))}
-       
-       <Button variant="contained" type='submit'>Add</Button>
+        <Banner movies={movies}/>
+        <h1 style={{color:'red'}}>ADD NEW MOVIE</h1>
+        <form onSubmit={handleSubmit}>
+           
+            
+           <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', marginTop: 15,  alignItems: 'center' }}>
+                    {Object.keys(formdetail).map((fieldkey, i) => (
+                        <div style={{ display: 'flex', justifyContent: 'space-between',width: '50%' }}>
+                            <h3>{fieldkey}</h3>
+                            <TextField    type={fieldkey === 'release_date' ? 'date' : fieldkey === 'poster_path' ? 'file' : 'text'} style={{  width: '55%',height:20, borderColor: '1px solid red' }}
+                                onChange={handleChange} placeholder={fieldkey} name={fieldkey} variant="outlined" />
+                        </div>
+                    ))}
+                </div>
+       <Button variant="contained" type='submit'>Add New Movie</Button>
         
         </form>
     </div>
